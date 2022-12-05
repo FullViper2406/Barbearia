@@ -54,7 +54,7 @@ public class EquipamentoDAO {
                 objfuncionariodto.setEquipamento(rs.getString("Equipamento"));
                 objfuncionariodto.setId(rs.getString("Id"));
                 objfuncionariodto.setFornecedor(rs.getString("Fornecedor"));
-                                objfuncionariodto.setFornecedor(rs.getString("Funcionario"));
+                                objfuncionariodto.setFuncionario(rs.getString("Funcionario"));
 
                 
                 Equipamento.add(objfuncionariodto);
