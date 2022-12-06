@@ -105,7 +105,7 @@ public class CadastrarFORN extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 710, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 630, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,7 +139,7 @@ public class CadastrarFORN extends javax.swing.JFrame {
             return;
         }
 
-        if(jContato1.getText().equals("")){
+        if(jContato1.getText().equals("(  )     -    ")){
             JOptionPane.showMessageDialog(null,"Campo  obrigatório,o preencha por favor !!","Aviso",JOptionPane.WARNING_MESSAGE);
             return;
         }

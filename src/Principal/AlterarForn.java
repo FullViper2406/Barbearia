@@ -53,7 +53,7 @@ String Nome,Endereco,Contato;
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 710, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, -1, -1));
 
         jNome.setBackground(new java.awt.Color(209, 79, 245));
         jNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

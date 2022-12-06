@@ -21,7 +21,7 @@ public class FornecedorDAO {
     ArrayList<FornecedorDTO> Fornecedor = new ArrayList<>();
 
     public void cadastar(FornecedorDTO objfuncionariodto) {
-            String sql = "insert into fornecedor (Nome,Endereco,Contato) values(?,?,?,?)";
+            String sql = "insert into fornecedor (Nome,Endereco,Contato) values(?,?,?)";
         conn = new ConexaoDAO().conectaBD();
         try {
             pstm = conn.prepareStatement(sql);
@@ -39,6 +39,8 @@ public class FornecedorDAO {
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Cadastro inválido !!");
+
+
         }
     }
 

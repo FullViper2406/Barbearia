@@ -179,7 +179,7 @@ public class Cadastrarf1 extends javax.swing.JFrame {
             return;
         }
 
-        if(jContato.getText().equals("")){
+        if(jContato.getText().equals("(  )     -    ")){
             JOptionPane.showMessageDialog(null,"Campo  obrigatório,o preencha por favor !!","Aviso",JOptionPane.WARNING_MESSAGE);
             return;
         }

@@ -3,30 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Principal;
-
-import DAO.PagarDAO;
-import DTO.PagarDTO;
+import DTO.FornecedorDTO;
+import DAO.FornecedorDAO;
+import Principal.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author breno
  */
-public class Dadosp extends javax.swing.JFrame {
+public class DadosForn1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Dadosp
+     * Creates new form DadosForn1
      */
-    public Dadosp() {
+    public DadosForn1() {
         initComponents();
     //centralizar a tela
                 setLocationRelativeTo(null);
     }
     //variável
-
-    private String nome;
+        private String nome;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,24 +40,25 @@ public class Dadosp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton7 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jDadosf = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton7.setBackground(new java.awt.Color(209, 79, 245));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Carregar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton9.setBackground(new java.awt.Color(209, 79, 245));
+        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Carregar");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         jDadosf.setBackground(new java.awt.Color(209, 79, 245));
         jDadosf.setForeground(new java.awt.Color(255, 255, 255));
@@ -63,12 +67,23 @@ public class Dadosp extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Data", "Valor"
+                "Nome", "Endereço", "Contato"
             }
         ));
         jScrollPane1.setViewportView(jDadosf);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 900, 330));
+
+        jButton5.setBackground(new java.awt.Color(209, 79, 245));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Excluir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(209, 79, 245));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -84,25 +99,36 @@ public class Dadosp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // carregar dados na tabela
         try {
-            PagarDAO objfuncionariodao = new PagarDAO();
+            FornecedorDAO objfuncionariodao = new FornecedorDAO();
             DefaultTableModel model = (DefaultTableModel) jDadosf.getModel();
             model.setNumRows(0);
-            ArrayList<PagarDTO> Aluno = objfuncionariodao.PesquisarPagar();
+            ArrayList<FornecedorDTO> Aluno = objfuncionariodao.PesquisarFornecedor();
             for (int num = 0; num < Aluno.size(); num++) {
                 model.addRow(new String[]{
                     Aluno.get(num).getNome(),
-                    Aluno.get(num).getData(),
-                    Aluno.get(num).getValor(),
+                    Aluno.get(num).getEndereco(),
+                    Aluno.get(num).getContato(),
                 });
 
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Listar Valores VIEW: " + erro);
         }        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // excluir dados
+        //System.out.println("linha selecionada "+jDadosf.getSelectedRow());
+        int setar = jDadosf.getSelectedRow();
+        nome = (jDadosf.getModel().getValueAt(setar, 0).toString());
+        FornecedorDTO objrevisãodto = new FornecedorDTO();
+        objrevisãodto.setNome(nome);
+        FornecedorDAO objrevisãodao = new FornecedorDAO();
+        objrevisãodao.excluir(objrevisãodto);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //voltar pra tela principal
@@ -117,7 +143,10 @@ public class Dadosp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JTable jDadosf;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

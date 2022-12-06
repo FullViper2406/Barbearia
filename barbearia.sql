@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Dez-2022 às 02:53
+-- Tempo de geração: 06-Dez-2022 às 03:45
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -54,9 +54,9 @@ CREATE TABLE `equipamento` (
 --
 
 CREATE TABLE `fornecedor` (
-  `Nome` int(100) DEFAULT NULL,
-  `Endereco` int(100) DEFAULT NULL,
-  `Contato` int(100) DEFAULT NULL
+  `Nome` varchar(100) DEFAULT NULL,
+  `Endereco` varchar(100) DEFAULT NULL,
+  `Contato` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

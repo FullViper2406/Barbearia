@@ -43,6 +43,10 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -50,10 +54,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -166,6 +166,34 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu7.setText("Fornecedor");
+
+        jMenuItem18.setText("Cadastrar");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem18);
+
+        jMenuItem19.setText("Alterar");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem19);
+
+        jMenuItem15.setText("Dados");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem15);
+
+        jMenuBar1.add(jMenu7);
+
         jMenu4.setText("Pagamento");
 
         jMenuItem10.setText("Pagar");
@@ -213,34 +241,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem14);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu6.setText("Fornecedor");
-
-        jMenuItem15.setText("Cadastrar");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem15);
-
-        jMenuItem17.setText("Alterar");
-        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem17ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem17);
-
-        jMenuItem16.setText("Dados");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem16);
-
-        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -359,24 +359,25 @@ new AlterarE().setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+     //entrar na tela cadastrar do menu fornecedor
+        new CadastrarFORN().setVisible(true); 
+        this.dispose();  // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+     //entrar na tela alterar do menu fornecedor
+
+        new AlterarForn().setVisible(true); 
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-//entrar na tela cadastrar do menu Fornecedor
-new CadastrarFORN().setVisible(true); 
-        this.dispose();
-// TODO add your handling code here:
+           //entrar na tela dados do menu fornecedor
+
+        new DadosForn1().setVisible(true); 
+        this.dispose();   // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem15ActionPerformed
-
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-    //entrar na tela dados do menu Fornecedor
-new DadosForn().setVisible(true); 
-        this.dispose();    // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
-
-    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-      //entrar na tela alterar do menu Fornecedor
-new AlterarForn().setVisible(true); 
-        this.dispose();    // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      */
@@ -390,7 +391,7 @@ new AlterarForn().setVisible(true);
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -399,8 +400,8 @@ new AlterarForn().setVisible(true);
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
