@@ -42,7 +42,6 @@ String Nome,Contato,Horario,Data;
         jLabel10 = new javax.swing.JLabel();
         jData1 = new javax.swing.JFormattedTextField();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,17 +109,6 @@ String Nome,Contato,Horario,Data;
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 230, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(209, 79, 245));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 630, -1, -1));
-
         jButton4.setBackground(new java.awt.Color(209, 79, 245));
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -177,12 +165,6 @@ ClienteDTO objfuncionariodto = new ClienteDTO();
         objfuncionariodao.alterar(objfuncionariodto);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //sair do sistema
-        System.exit(0);        // TODO add your handling code here:
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //voltar pra tela principal
         new Principal() .setVisible(true);
@@ -195,7 +177,6 @@ ClienteDTO objfuncionariodto = new ClienteDTO();
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jContato1;
