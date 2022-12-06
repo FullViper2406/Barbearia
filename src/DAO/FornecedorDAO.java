@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-import DTO.EquipamentoDTO;
+import DTO.FornecedorDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,23 +14,22 @@ import javax.swing.JOptionPane;
  *
  * @author breno
  */
-public class EquipamentoDAO {
-    Connection conn;
+public class FornecedorDAO {
+      Connection conn;
     PreparedStatement pstm;
     ResultSet rs;
-    ArrayList<EquipamentoDTO> Equipamento = new ArrayList<>();
+    ArrayList<FornecedorDTO> Fornecedor = new ArrayList<>();
 
-    public void cadastar(EquipamentoDTO objfuncionariodto) {
-        String sql = "insert into equipamento (Id,Equipamento,Fornecedor,Funcionario) values(?,?,?,?)";
+    public void cadastar(FornecedorDTO objfuncionariodto) {
+            String sql = "insert into fornecedor (Nome,Endereco,Contato) values(?,?,?,?)";
         conn = new ConexaoDAO().conectaBD();
         try {
             pstm = conn.prepareStatement(sql);
-                        pstm.setString(1, objfuncionariodto.getId());
+                        pstm.setString(1, objfuncionariodto.getNome());
 
-            pstm.setString(2,objfuncionariodto.getEquipamento());
+            pstm.setString(2,objfuncionariodto.getEndereco());
 
-            pstm.setString(3, objfuncionariodto.getFornecedor());
-                        pstm.setString(4, objfuncionariodto.getFuncionario());
+            pstm.setString(3, objfuncionariodto.getContato());
 
             
 
@@ -43,37 +42,36 @@ public class EquipamentoDAO {
         }
     }
 
-    public ArrayList<EquipamentoDTO> PesquisarEquipamento() {
-        String sql = "select * from equipamento";
+    public ArrayList<FornecedorDTO> PesquisarFornecedor() {
+        String sql = "select * from fornecedor";
         conn = new ConexaoDAO().conectaBD();
 
         try {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             while (rs.next()) {
-                EquipamentoDTO objfuncionariodto = new EquipamentoDTO();
-                objfuncionariodto.setId(rs.getString("Id"));
-                                objfuncionariodto.setEquipamento(rs.getString("Equipamento"));
+                FornecedorDTO objfuncionariodto = new FornecedorDTO();
+                objfuncionariodto.setNome(rs.getString("Nome"));
+                                objfuncionariodto.setEndereco(rs.getString("Endereco"));
 
-                objfuncionariodto.setFornecedor(rs.getString("Fornecedor"));
-                                objfuncionariodto.setFuncionario(rs.getString("Funcionario"));
+                objfuncionariodto.setContato(rs.getString("Contato"));
 
                 
-                Equipamento.add(objfuncionariodto);
+                Fornecedor.add(objfuncionariodto);
             }
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "EquipamentoDAO Pesquisar: " + erro);
         }
-        return Equipamento;
+        return Fornecedor;
 
     }
-public void excluir(EquipamentoDTO objrevisãodto){
-       String sql= "DELETE FROM equipamento where Id = ?";
+public void excluir(FornecedorDTO objrevisãodto){
+       String sql= "DELETE FROM fornecedor where Nome = ?";
            conn= new ConexaoDAO().conectaBD();
            try{
        pstm= conn.prepareStatement(sql);
-       pstm.setString(1,objrevisãodto.getId());
+       pstm.setString(1,objrevisãodto.getNome());
                             pstm.execute();
                             pstm.close();
 
@@ -84,16 +82,15 @@ public void excluir(EquipamentoDTO objrevisãodto){
         } catch (Exception erro) {
         }     
 }
- public void alterar(EquipamentoDTO objfuncionariodto) {
-        String sql = "Update  equipamento set  Equipamento = ? ,where Id = ?,Fornecedor= ?,Funcionario = ?";
+ public void alterar(FornecedorDTO objfuncionariodto) {
+        String sql = "Update  equipamento set where Nome = ? , Endereco = ?,Contato =  ?";
         conn = new ConexaoDAO().conectaBD();
         try {
             pstm = conn.prepareStatement(sql);
-            pstm.setString(1, objfuncionariodto.getId());
-            pstm.setString(2, objfuncionariodto.getEquipamento());
+            pstm.setString(1, objfuncionariodto.getNome());
+            pstm.setString(2, objfuncionariodto.getEndereco());
 
-            pstm.setString(3, objfuncionariodto.getFornecedor());
-                        pstm.setString(4, objfuncionariodto.getFuncionario());
+            pstm.setString(3, objfuncionariodto.getContato());
 
           
             pstm.execute();

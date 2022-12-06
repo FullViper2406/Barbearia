@@ -47,15 +47,15 @@ public class CadastrarE extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Equipamento");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         jLabel2.setText("ID");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 57, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
         jLabel3.setText("Fornecedor");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 85, -1, -1));
-        getContentPane().add(jEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 180, -1));
-        getContentPane().add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 180, -1));
+        getContentPane().add(jEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 180, -1));
+        getContentPane().add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 180, -1));
         getContentPane().add(jFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 170, -1));
 
         jButton3.setBackground(new java.awt.Color(209, 79, 245));

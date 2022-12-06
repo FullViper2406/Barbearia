@@ -3,30 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Principal;
-
-import DAO.EquipamentoDAO;
-import DTO.EquipamentoDTO;
+import DTO.FornecedorDTO;
+import DAO.FornecedorDAO;
+import Principal.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author breno
  */
-public class Dadose extends javax.swing.JFrame {
+public class DadosForn extends javax.swing.JFrame {
 
     /**
-     * Creates new form Dadose
+     * Creates new form DadosForn
      */
-    public Dadose() {
+    public DadosForn() {
         initComponents();
-     //centralizar a tela
+         //centralizar a tela
                 setLocationRelativeTo(null);
     }
     //variável
-
-    private String Id;
+        private String nome;
 
 
     /**
@@ -41,9 +44,8 @@ public class Dadose extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jDadosf = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,34 +68,12 @@ public class Dadose extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Equipamento", "Fornecedor", "Funcionário"
+                "Nome", "Endereço", "Contato"
             }
         ));
         jScrollPane1.setViewportView(jDadosf);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 900, 330));
-
-        jButton3.setBackground(new java.awt.Color(209, 79, 245));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Voltar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(209, 79, 245));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 630, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(209, 79, 245));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -106,31 +86,50 @@ public class Dadose extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
 
+        jButton3.setBackground(new java.awt.Color(209, 79, 245));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Voltar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // carregar dados na tabela
         try {
-            EquipamentoDAO objfuncionariodao = new EquipamentoDAO();
+            FornecedorDAO objfuncionariodao = new FornecedorDAO();
             DefaultTableModel model = (DefaultTableModel) jDadosf.getModel();
             model.setNumRows(0);
-            ArrayList<EquipamentoDTO> Aluno = objfuncionariodao.PesquisarEquipamento();
+            ArrayList<FornecedorDTO> Aluno = objfuncionariodao.PesquisarFornecedor();
             for (int num = 0; num < Aluno.size(); num++) {
                 model.addRow(new String[]{
-                    Aluno.get(num).getId(),
-                                        Aluno.get(num).getEquipamento(),
+                    Aluno.get(num).getNome(),
+                    Aluno.get(num).getEndereco(),
+                    Aluno.get(num).getContato(),
+                   });
 
-                    Aluno.get(num).getFornecedor(),
-                                        Aluno.get(num).getFuncionario(),
-
-                });
-
-            }
+        }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Listar Valores VIEW: " + erro);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // excluir dados
+        //System.out.println("linha selecionada "+jDadosf.getSelectedRow());
+        int setar = jDadosf.getSelectedRow();
+        nome = (jDadosf.getModel().getValueAt(setar, 0).toString());
+        FornecedorDTO objrevisãodto = new FornecedorDTO();
+        objrevisãodto.setNome(nome);
+        FornecedorDAO objrevisãodao = new FornecedorDAO();
+        objrevisãodao.excluir(objrevisãodto);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //voltar pra tela principal
@@ -141,27 +140,9 @@ public class Dadose extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // sair do sisteam
-        System.exit(0);        // TODO add your handling code here:
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // excluir dados
-        //System.out.println("linha selecionada "+jDadosf.getSelectedRow());
-        int setar = jDadosf.getSelectedRow();
-        Id = (jDadosf.getModel().getValueAt(setar, 0).toString());
-        EquipamentoDTO objrevisãodto = new EquipamentoDTO();
-        objrevisãodto.setId(Id);
-        EquipamentoDAO objrevisãodao = new EquipamentoDAO();
-        objrevisãodao.excluir(objrevisãodto);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-   
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;

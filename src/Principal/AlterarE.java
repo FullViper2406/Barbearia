@@ -101,7 +101,7 @@ String Equipamento,Id,Fornecedor,Funcionario;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //Cadastrar equipamento
+        //Alterar equipamento
         Equipamento = (jEquipamento.getText());
 
         Id = jId.getText();
