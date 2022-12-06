@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Dez-2022 às 02:26
+-- Tempo de geração: 06-Dez-2022 às 02:53
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -41,10 +41,22 @@ CREATE TABLE `cliente` (
 --
 
 CREATE TABLE `equipamento` (
-  `Equipamento` varchar(100) DEFAULT NULL,
   `Id` varchar(100) NOT NULL,
+  `Equipamento` varchar(100) DEFAULT NULL,
   `Fornecedor` varchar(100) DEFAULT NULL,
   `Funcionario` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `fornecedor`
+--
+
+CREATE TABLE `fornecedor` (
+  `Nome` int(100) DEFAULT NULL,
+  `Endereco` int(100) DEFAULT NULL,
+  `Contato` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -92,6 +104,13 @@ CREATE TABLE `preco` (
   `Barba` varchar(100) DEFAULT NULL,
   `Sobrancelha` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `preco`
+--
+
+INSERT INTO `preco` (`Cabelo`, `Barba`, `Sobrancelha`) VALUES
+('25,00', '20,00', '10,00');
 
 --
 -- Índices para tabelas despejadas
